@@ -13,12 +13,14 @@ After completing this lab, you will be able to:
 
 1. Open the previous project, or the lab1 project from the **{labsolutions}** directory, and save the project as lab2. Open the Block Design.
 1.	Start Vivado, if necessary, and open either the lab1 project (lab1.xpr) you created in the previous lab or from the **{labsolutions}** directory using the Open Project link in the Getting Started page.
+
 2.	Select **File > Save Project As…** to open the Save Project As dialog box. Enter lab2 as the project name.  Make sure that the Create Project Subdirectory option is checked, the project directory path is **{labs}** and click OK.
 This will create the lab2 directory and save the project and associated directory with lab2 name.
 
 ### Add Two Instances of GPIO
 
 1.	In the Sources panel, expand system_wrapper, and double-click on the system.bd (system_i) file to invoke IP Integrator.
+
 2.	Double click on the Zynq block in the diagram to open the Zynq configuration window.
 3.	Select **PS-PL Configuration** page menu on the left.
 4.	Expand **AXI Non Secure Enablement > GP Master AXI Interfaces**, if necessary, and click on Enable **M_AXI_GP0 interface** check box under the field to enable the AXI GP0 port.
@@ -47,6 +49,7 @@ This will create the lab2 directory and save the project and associated director
    </p>
 
 11.	Double click on the _AXI GPIO block_ to open the customization window.
+
 12.	From the Board Interface drop down, select sws 8bits for _ZedBoard_, sws 4bits for _Zybo_ or sws 2bits for _PYNQ-Z2_ for **GPIO IP Interface**.
 13.	Next, click the IP configuration tab, and notice the width has already been set to match the switches on the *Zedboard* (8), *Zybo* (4) or *PYNQ-Z2* (2)  
 
@@ -66,6 +69,7 @@ Notice that the peripheral can be configured for two channels, but, since we wan
   Notice two additional blocks, Processor System Reset, and AXI Interconnect have automatically been added to the design. (The blocks can be dragged to be rearranged, or the design can be redrawn.).
 
 18.	Add another instance of the GPIO peripheral (Add IP). Name it as **buttons**
+
 19.	Double click on the IP block, select the _btns GPIO interface_ (btns_5bits for the _Zedboard_, btns_4bits for the _Zybo_ and btns 4bits for the _PYNQ-Z2_) and click OK.
 At this point connection automation could be run, or the block could be connected manually. This time the block will be connected manually.
 20.	Double click on the _AXI Interconnect_ (name : ps7_0_axi_periph) and change the Number of **Master Interfaces** to 2 and click OK
@@ -116,6 +120,8 @@ Note that both peripherals are assigned in the address range of _0x40000000_ to 
    3-1.	The push button and dip switch instances will be connected to corresponding pins on the board.  This can be done manually, or using Designer Assistance.  Normally, one would consult the board’s user manual to find this information.
    -->
 1.	In the Diagram view, notice that **Designer Assistance** is available. We will manually create the ports and connect.
+
+
 2.	Right-Click on the _GPIO port_ of the switches instance and select **Make External** to create the external port. This will create the external port named **gpio** and connect it to the peripheral. Because Vivado is “board aware”, the pin constraints will be automatically applied to the port.
 3.	Select the gpio port and change the name to **switches** in its properties form.
 The width of the interface will be automatically determined by the upstream block.
@@ -148,6 +154,8 @@ The design should now look similar to the diagram below
 ### Generate Bitstream and Export to SDK
 
 1.	Click on **Generate Bitstream**, and click Yes if prompted to **Launch Implementation** (Click Yes if prompted to save the design)
+
+
 2.	Click Cancel
 3.	Export the hardware by clicking **File > Export > Export Hardware** and click OK. This time, there is hardware in Programmable Logic (PL) and a bitstream has been generated and should be included in the export to SDK.
 4.	Click Yes to overwrite the hardware module.
